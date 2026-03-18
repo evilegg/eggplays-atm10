@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All The Mods 10 — eggplays edition</title>
+    <style>
+      :root {
+        --canvas: #ffffff;
+        --canvas-subtle: #f6f8fa;
+        --border: #d0d7de;
+        --border-muted: #d8dee4;
+        --fg: #1f2328;
+        --fg-muted: #636c76;
+        --accent: #0969da;
+        --btn-bg: #1a7f37;
+        --btn-hover: #1c6e31;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--fg);
+        background: var(--canvas);
+        margin: 0;
+      }
+
+      /* ── Header ── */
+
+      header {
+        background: var(--canvas-subtle);
+        border-bottom: 1px solid var(--border);
+        padding: 56px 24px 48px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0 8px;
+      }
+
+      header p {
+        color: var(--fg-muted);
+        font-size: 1.125rem;
+        margin: 0 0 28px;
+      }
+
+      .btn-download {
+        display: inline-block;
+        background: var(--btn-bg);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+
+      .btn-download:hover { background: var(--btn-hover); }
+
+      /* ── Main ── */
+
+      main {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 40px 24px 72px;
+      }
+
+      /* ── Steps ── */
+
+      .step { margin-bottom: 40px; }
+
+      .step h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-muted);
+        padding-bottom: 8px;
+        margin: 0 0 16px;
+      }
+
+      .step h3 {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--fg-muted);
+        margin: 20px 0 6px;
+      }
+
+      .step ol {
+        margin: 0;
+        padding-left: 24px;
+      }
+
+      .step ol li { margin-bottom: 6px; }
+
+      /* ── Callout ── */
+
+      .callout {
+        background: var(--canvas-subtle);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-top: 16px;
+        font-size: 0.9375rem;
+        color: var(--fg-muted);
+      }
+
+      /* ── Troubleshooting ── */
+
+      .troubleshooting {
+        background: var(--canvas-subtle);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 20px 24px;
+        margin-top: 8px;
+      }
+
+      .troubleshooting h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0 0 16px;
+      }
+
+      .troubleshooting dl { margin: 0; }
+
+      .troubleshooting dt {
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .troubleshooting dd {
+        margin: 0 0 14px;
+        color: var(--fg-muted);
+      }
+
+      .troubleshooting dd:last-child { margin-bottom: 0; }
+
+      /* ── Shared ── */
+
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 0.875em;
+        background: var(--canvas-subtle);
+        border: 1px solid var(--border-muted);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+
+      /* ── Footer ── */
+
+      footer {
+        text-align: center;
+        padding: 20px 24px;
+        font-size: 0.875rem;
+        color: var(--fg-muted);
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>All The Mods 10 — eggplays edition</h1>
+      <p>A private modded Minecraft server. Follow the steps below to join.</p>
+      <a
+        class="btn-download"
+        href="https://github.com/evilegg/eggplays-atm10/releases/latest/download/modpack.mrpack"
+      >⬇ Download Modpack (.mrpack)</a>
+    </header>
+
+    <main>
+      <div class="step">
+        <h2>Step 1 — Install Tailscale</h2>
+        <p>
+          Tailscale creates a private network between you and the server.
+          You must be connected any time you want to play.
+        </p>
+
+        <h3>macOS</h3>
+        <ol>
+          <li>Download and install <a href="https://tailscale.com/download/mac">Tailscale for macOS</a>.</li>
+          <li>Open Tailscale from your Applications folder and sign in with any supported provider (Google, GitHub, Microsoft, etc.).</li>
+          <li>Send your Tailscale login email to the server admin to be added to the network.</li>
+          <li>Once added, the Tailscale icon in your menu bar will show a green dot — you're connected.</li>
+        </ol>
+
+        <h3>Windows</h3>
+        <ol>
+          <li>Download and install <a href="https://tailscale.com/download/windows">Tailscale for Windows</a>.</li>
+          <li>Open Tailscale from the system tray and sign in with any supported provider (Google, GitHub, Microsoft, etc.).</li>
+          <li>Send your Tailscale login email to the server admin to be added to the network.</li>
+          <li>Once added, the Tailscale icon in your system tray will show as connected.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Step 2 — Install the Modpack</h2>
+        <ol>
+          <li>Download and install the <a href="https://modrinth.com/app">Modrinth App</a>.</li>
+          <li>Use the <strong>Download Modpack</strong> button above to get the <code>.mrpack</code> file, then open it in the Modrinth App to install.</li>
+          <li>Click <strong>Play</strong> to launch the modded client.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Step 3 — Connect to the Server</h2>
+        <ol>
+          <li>From the Minecraft main menu, click <strong>Multiplayer → Add Server</strong>.</li>
+          <li>Enter the server address: <code>ratchet84.tail3078bf.ts.net</code></li>
+          <li>Click <strong>Done</strong>, then double-click the server to join.</li>
+        </ol>
+        <div class="callout">
+          Not seeing the server or getting a connection error?
+          Make sure Tailscale is running and shows as connected before launching Minecraft.
+        </div>
+      </div>
+
+      <div class="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <dl>
+          <dt>"Can't connect" / server times out</dt>
+          <dd>Check that Tailscale is running and connected (green icon in menu bar / system tray).</dd>
+
+          <dt>"Incompatible client" or kicked on join</dt>
+          <dd>Make sure you are running the modpack from the Modrinth App, not vanilla Minecraft.</dd>
+
+          <dt>Asked to be added to the network</dt>
+          <dd>Send your Tailscale account email to the server admin.</dd>
+        </dl>
+      </div>
+    </main>
+
+    <footer>
+      <a href="https://github.com/evilegg/eggplays-atm10">evilegg/eggplays-atm10</a>
+    </footer>
+  </body>
+</html>

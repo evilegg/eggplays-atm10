@@ -1,0 +1,50 @@
+name: Normalize release asset name
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  rename-mrpack:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Rename .mrpack asset to stable name
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STABLE_NAME: all-the-mods-10.mrpack
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+
+          # Find the first .mrpack asset
+          ASSET=$(gh release view "$TAG" --repo ${{ github.repository }} --json assets \
+            --jq '.assets[] | select(.name | endswith(".mrpack")) | {id: .id, name: .name, url: .url}' \
+            | head -1)
+
+          ASSET_NAME=$(echo "$ASSET" | jq -r '.name')
+          ASSET_ID=$(echo "$ASSET" | jq -r '.id')
+
+          if [ "$ASSET_NAME" = "$STABLE_NAME" ]; then
+            echo "Asset already named '$STABLE_NAME', nothing to do."
+            exit 0
+          fi
+
+          echo "Renaming '$ASSET_NAME' → '$STABLE_NAME'"
+
+          # Download the existing asset
+          gh release download "$TAG" \
+            --repo ${{ github.repository }} \
+            --pattern "$ASSET_NAME" \
+            --output "$STABLE_NAME"
+
+          # Delete the old asset
+          gh api --method DELETE \
+            "/repos/${{ github.repository }}/releases/assets/$ASSET_ID"
+
+          # Upload with the stable name
+          gh release upload "$TAG" \
+            --repo ${{ github.repository }} \
+            "$STABLE_NAME"
+
+          echo "Done."
